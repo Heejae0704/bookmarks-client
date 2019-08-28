@@ -4,6 +4,7 @@ import BookmarksContext from '../BookmarksContext';
 import config from '../config'
 import './EditBookmark.css'
 
+
 const Required = () => (
     <span className='EditBookmark__required'>*</span>
 )
@@ -31,7 +32,7 @@ export default class EditBookmark extends Component {
 
   componentDidMount() {
       const { bookmarkId }  = this.props.match.params
-      fetch(`http://localhost:8000/api/bookmarks/${bookmarkId}`, {
+      fetch(config.API_ENDPOINT + `/${bookmarkId}`, {
             method: 'GET',
             headers: {
                 'authorization': `bearer ${config.API_KEY}`
@@ -70,7 +71,7 @@ export default class EditBookmark extends Component {
       const { bookmarkId } = this.props.match.params
       const { id, title, url, description, rating } = this.state
       const newBookmark = { id, title, url, description, rating }
-      fetch(`http://localhost:8000/api/bookmarks/${bookmarkId}`, {
+      fetch(config.API_ENDPOINT + `/${bookmarkId}`, {
           method: 'PATCH',
           body: JSON.stringify(newBookmark),
           headers: {

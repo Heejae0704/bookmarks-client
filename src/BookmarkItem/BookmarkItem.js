@@ -46,6 +46,8 @@ export default function BookmarkItem(props) {
         {props.description}
       </p>
       <div className='BookmarkItem__buttons'>
+       <Link to={`/edit/${props.id}`}>Edit Bookmark</Link>
+       {' '}
         <button
           className='BookmarkItem__description'
           onClick={() => {
@@ -58,7 +60,6 @@ export default function BookmarkItem(props) {
           Delete
         </button>
       </div>
-      <Link to={`/edit/${props.id}`}>Edit Bookmark</Link>
     </li>
   )}
   </BookmarksContext.Consumer>
@@ -70,23 +71,23 @@ BookmarkItem.defaultProps = {
   description: "",
 }
 
-BookmarkItem.propTypes = {
-  title: PropTypes.string.isRequired,
-  url: (props, propName, componentName) => {
-    const prop = props[propName];
+// BookmarkItem.propTypes = {
+//   title: PropTypes.string.isRequired,
+//   url: (props, propName, componentName) => {
+//     const prop = props[propName];
 
-    if (!prop) {
-      return new Error(`${propName} is required in ${componentName}.`)
-    }
+//     if (!prop) {
+//       return new Error(`${propName} is required in ${componentName}.`)
+//     }
 
-    if (typeof prop !== 'string') {
-      return new Error(`Invalid prop, ${propName} is expected to be string. ${typeof prop} found.`)
-    }
+//     if (typeof prop !== 'string') {
+//       return new Error(`Invalid prop, ${propName} is expected to be string. ${typeof prop} found.`)
+//     }
 
-    if (prop.length < 5 || !prop.match(new RegExp(/^https?:\/\//))) {
-      return new Error(`Invalid prop, ${propName} must be min length 5 and begin http(s)://. Validation Failed`)
-    }
-  },
-  rating: PropTypes.number,
-  description: PropTypes.string
-}
+//     if (prop.length < 5 || !prop.match(new RegExp(/^https?:\/\//))) {
+//       return new Error(`Invalid prop, ${propName} must be min length 5 and begin http(s)://. Validation Failed`)
+//     }
+//   },
+//   rating: PropTypes.number,
+//   description: PropTypes.string
+// }
