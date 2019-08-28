@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "alias": "heejae-bookmarks-app",
+    "name": "bookmarks-app",
+    "routes": [
+        {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": ".*",
+          "dest": "/index.html"
+        }
+    ]
+  }
